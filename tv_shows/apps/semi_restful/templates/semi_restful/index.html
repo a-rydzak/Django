@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>All Shows</title>
+      {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'semi_restful/css/main.css' %}">
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+    <body>
+
+
+    <h1>All TV Shows</h1>
+
+    <table >
+      <tr>
+        <th>Title</th>
+        <th>Network</th> 
+        <th>Releate Date</th>
+        <th>Action</th>
+      </tr>
+      {% for show in shows %}
+      <tr>
+        <td>{{show.title}}</td>
+        <td>{{show.network}}</td> 
+        <td>{{show.release_date}}</td>
+        <td> <a href="/shows/show/{{show.id}}">Show</a>  <a href="/shows/edit/{{show.id}}">Edit</a>   <a href="/shows/delete/{{show.id}}">Delete</a> </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <a href="/shows/new">Make A New SHow Here</a>
+
+
+    </body>
+  </html>

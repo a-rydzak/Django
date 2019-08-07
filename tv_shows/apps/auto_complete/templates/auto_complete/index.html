@@ -1,0 +1,37 @@
+
+<html>
+<head>
+      <meta charset="utf-8">
+      <title>All Shows</title>
+      {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'autocomplete/css/main.css' %}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+    <body>
+        <p>Find all users whose name starts with</p>
+            <form id='myForm' method='POST' action='/users/api'>
+                {% csrf_token %}
+                <!-- add csrf_token if you're using Django -->
+                <input type='text' id='starts_with' name='starts_with' value=''>
+            </form>
+        
+
+        <div id='placeholder'>
+            
+        {% if users %}
+            <ul>
+                {% for user in users %}
+                <li>{{ user.first_name }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        </div>
+
+        <ul id='demo'></ul>
+
+
+    </body>
+<script  src="{% static 'autocomplete/javascript/listFill.js' %}"></script>
+</html>

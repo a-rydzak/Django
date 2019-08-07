@@ -1,4 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.db.models import Count, F, Value # https://docs.djangoproject.com/en/2.2/ref/models/expressions/
+from django.db.models.functions import Length, Upper
+
 # the index function is called when root is visited
 def index(request):
     response = "placeholder to later display all the list of blogs"
@@ -36,6 +39,7 @@ def create_again(request):
         # request.session['name'] = "test"  # more on session below
         # print(request.session['name'])
         # print("*"*50)
+        # del request.session['key']
         # {{request.session.name}} in the html
         return redirect("/first_app/")
     else:
@@ -49,3 +53,20 @@ def html(request):
     }
 
     return render(request, './first_app/index.html', context)
+
+
+    # if request.method == "GET":
+    #     print("a GET request is being made to this route")
+    #     return render(request, "some_app/some_template.html")
+    # if request.method == "POST":
+    #     print("a POST request is being made to this route")
+    #     return redirect("/")
+
+
+
+    #  <h1>All Movies</h1>
+    # <ul>
+    # {% for movie in all_the_movies %}
+    #     <li>{{ movie.title }}</li>
+    # {% endfor %}
+    # </ul>

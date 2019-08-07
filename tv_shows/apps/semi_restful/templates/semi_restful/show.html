@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <title>{{title}}</title>
+      {% load static %}
+      <!-- The line above tells Django to be ready to listen for static files -->
+      <link rel="stylesheet" href="{% static 'semi_restful/css/show.css' %}">
+      <!-- Put the static files in the static folder inside your app.  
+           Django collects files within all static folders and puts them within a single folder -->    
+    </head>
+<body>
+<a href="/shows/"><h2>Home</h2></a>
+<h1>Tv Show {{id}}</h1>
+
+<p>Title: {{title}}</p>
+<p>Network: {{network}}</p>
+<p>Release Date: {{release_date}}</p>
+<p>Description: {{description}}</p>
+
+<a href="/shows/edit/{{id}}">Edit</a>   <a href="/shows/delete/{{id}}">Delete</a>
+
+</body>
+</html>
