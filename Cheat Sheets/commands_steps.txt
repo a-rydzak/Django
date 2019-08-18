@@ -1,0 +1,44 @@
+
+django-admin startproject test_app
+
+python ../manage.py startapp first_app
+
+python ../manage.py startapp depolyments
+python ../manage.py startapp issuelog
+python ../manage.py startapp numbersmatter
+python ../manage.py startapp pocschedule
+
+python manage.py runserver
+
+python manage.py migrate
+
+python manage.py makemigrations
+python manage.py migrate
+
+python manage.py shell
+
+from apps.first_app.models import *
+
+from django.contribauth.models import User
+PYTHONPATH=/home/edpapp01/Python-3.7.3/Lib/site-packages/django
+
+python manage.py inspectdb
+python manage.py inspectdb > models.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'ecdd1', #orcale instance
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': 'chodbd1-scan.hdq.aa.com',
+        'PORT': '1521',    
+        }
+}
+>manage.py sqlclear appname | python manage.py dbshell
+>manage.py syncdb 
+https://webcache.googleusercontent.com/search?q=cache:OC_Puzqel60J:https://stackoverflow.com/questions/7598024/django-flush-vs-sqlclear-syncdb+&cd=2&hl=en&ct=clnk&gl=us
+
+
+SELECT TRUNC(STAT2_TMS),SUM(INFLOW_PNR_LAST_HOUR),SUM(APPL_PRFMNC_STAT1_NBR) FROM INNOVDAY.pnr_historical_data GROUP BY TRUNC(STAT2_TMS)
+select INFLOW_PNR_LAST_HOUR,APPL_PRFMNC_STAT1_NBR,PNR_LATENCY from INNOVDAY.pnr_historical_data where STAT2_TMS = (select max(STAT2_TMS) FROM INNOVDAY.pnr_historical_data)
