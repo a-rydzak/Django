@@ -31,7 +31,7 @@ DATABASES = {
         'NAME': 'ecdd1', #orcale instance
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'chodbd1-scan.hdq.aa.com',
+        'HOST': 'xxxxx-xxx.xxx.xx.com',
         'PORT': '1521',    
         }
 }
